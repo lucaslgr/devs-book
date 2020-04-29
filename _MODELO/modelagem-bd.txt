@@ -17,6 +17,7 @@
 
 -POSTS
 --id
+--id_user
 --type(text, photo)
 --created_at
 --body

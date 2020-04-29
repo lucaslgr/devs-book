@@ -391,6 +391,26 @@ header .head-side {
     margin:0;
 }
 
+.pagination a{
+    display: inline-block;
+    padding: 7px 10px;
+    border: 1px solid #CCC;
+    margin: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+.pagination a:hover{
+    background-color: #DDD;
+    box-shadow: 1px 1px 10px rgb(102, 102, 102);
+    transition: all 0.5s;
+}
+
+.pagination a.active{
+    background-color: #FFF;
+    font-weight: bold;
+}
+
 @media (max-width: 992px) {
     header .head-side-right {
         display:none !important;
