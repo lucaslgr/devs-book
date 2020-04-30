@@ -11,7 +11,12 @@ $router->post('/login', 'LoginController@signinAction'); //Faz login POST
 $router->get('/register', 'LoginController@signup'); //Cadastro
 $router->post('/register', 'LoginController@signupAction'); //Faz cadastro POST
 
-$router->post('/post/new', 'PostController@new');
+$router->post('/post/new', 'PostController@new'); //Faz a postagem de um comentário
+
+$router->get('/profile/{id}', 'ProfileController@index');
+$router->get('/profile', 'ProfileController@index');
+
+$router->get('/logout', 'LoginController@logout');
 /**
  * $router->get('/search');
  * $router->get('/profile')

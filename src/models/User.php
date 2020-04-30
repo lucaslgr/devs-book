@@ -3,14 +3,14 @@ namespace src\models;
 use \core\Model;
 
 class User extends Model {
-    protected int $id;
-    protected string $name;
-    protected string $email;
-    protected string $avatar;
-    protected string $birthdate;
-    protected string $city;
-    protected string $work;
-    protected string $cover;
+    protected $id;
+    protected $name;
+    protected $email;
+    protected $avatar;
+    protected $birthdate;
+    protected $city;
+    protected $work;
+    protected $cover;
 
     public function __construct($id = null, $name = '', $email = '', $avatar = '', $birthdate = '', $city = '', $work = '', $cover = ''){
         $this->setId($id);
@@ -72,6 +72,10 @@ class User extends Model {
 
     public function getAvatar(){
         return $this->avatar;
+    }
+
+    public function getBirthDate(){
+        return $this->birthdate;
     }
 
     public function getCity(){

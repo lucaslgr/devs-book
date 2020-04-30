@@ -2,7 +2,7 @@
     <div class="box-body">
         <div class="feed-item-head row mt-20 m-width-20">
             <div class="feed-item-head-photo">
-                <a href=""><img src="media/avatars/<?=$feedItem->user->getAvatar();?>" /></a>
+                <a href=""><img src="<?=$base;?>/media/avatars/<?=$feedItem->user->getAvatar();?>" /></a>
             </div>
             <div class="feed-item-head-info">
                 <a href=""><span class="fidi-name"><?=$feedItem->user->getName();?></span></a>
@@ -26,7 +26,11 @@
             </div>
         </div>
         <div class="feed-item-body mt-10 m-width-20">
-            <?=nl2br($feedItem->body)?>
+            <?php if($feedItem->type=='photo'):?>
+                <img src="<?=$base;?>/media/uploads/<?=($feedItem->body)?>" alt="">
+            <?php elseif($feedItem->type=='text'):?>
+                <?=nl2br($feedItem->body)?>
+            <?php endif;?>
         </div>
         <div class="feed-item-buttons row mt-20 m-width-20">
             <div class="like-btn <?=($feedItem->liked)?'on':''?>"><?=$feedItem->likeCount;?></div>

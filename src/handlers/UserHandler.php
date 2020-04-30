@@ -2,8 +2,9 @@
 namespace src\handlers;
 
 use \src\models\User;
+use src\models\UserRelation;
 
-class LoginHandler {
+class UserHandler {
 
     /**
      * Verifica se existe algum usuáro logado com um token armazenado na sessão
@@ -63,6 +64,73 @@ class LoginHandler {
     */
     public static function emailExists($email){
         return User::select()->where('email', $email)->one() ? true: false;
+    }
+
+    /**
+     * Verifica se já tem um usuário cadastrado com esse id
+    */
+    public static function idExists($id){
+        return User::select()->where('id', $id)->one() ? true: false;
+    }
+
+    /**
+     * Pega as informações do usuário do respectivo id
+    */
+    public static function getUser($id, $full = false){
+        $data = User::select()->where('id', $id)->one();
+
+        if ($data) {
+            $user = new User();
+            $user->setId($data['id']);
+            $user->setName($data['name']);
+            $user->setBirthDate($data['birthdate']);
+            $user->setCity($data['city']);
+            $user->setWork($data['work']);
+            $user->setAvatar($data['avatar']);
+            $user->setCover($data['cover']);
+
+            
+
+            if ($full) {
+                $user->followers = [];
+                $user->followings = [];
+                $user->photos = [];
+
+                //followers
+                $followers = UserRelation::select()->where('user_to', $id)->get();
+                foreach ($followers as $follower) {
+                    //Pegando as informações do usuário
+                    $userData = User::select()->where('id', $follower['user_from'])->one();
+
+                    $newUser = new User();
+                    $newUser->setId($userData['id']);
+                    $newUser->setName($userData['name']);
+                    $newUser->setAvatar($userData['avatar']);
+
+                    $user->followers[] = $newUser;
+                }
+
+                //following
+                $followings = UserRelation::select()->where('user_from', $id)->get();
+                foreach ($followings as $following) {
+                    //Pegando as informações do usuário
+                    $userData = User::select()->where('id', $following['user_to'])->one();
+
+                    $newUser = new User();
+                    $newUser->setId($userData['id']);
+                    $newUser->setName($userData['name']);
+                    $newUser->setAvatar($userData['avatar']);
+
+                    $user->followings[] = $newUser;
+                }
+
+                //photos
+                $user->photos = PostHandler::getPhotosFrom($id);
+            }
+
+            return $user;
+        }
+        return false;
     }
 
     /**
