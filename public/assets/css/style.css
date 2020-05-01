@@ -291,6 +291,10 @@ header .head-side {
 .profile-info-item {
     text-align: center;
 }
+
+.profile-info-item a {
+    text-decoration: none;
+}
 .profile-info-item-n {
     font-weight: bold;
     font-size:20px;
@@ -390,6 +394,7 @@ header .head-side {
 }
 .full-user-photos .user-photo-item {
     margin:0;
+    max-width: 100%;
 }
 
 .pagination a{
@@ -411,6 +416,47 @@ header .head-side {
     background-color: #FFF;
     font-weight: bold;
 }
+
+.button {
+    border:0;
+    padding:10px 20px;
+    background-color:#4a76a8;
+    border-radius:10px;
+    color:#FFF;
+    font-size:15px;
+    text-decoration: none;
+    cursor:pointer;
+    box-shadow:0px 0px 3px #999;
+}
+.button:hover {
+    background-color:#477dbb;
+}
+
+#user-config {
+    max-width: 75%;
+}
+
+#user-config input{
+    width: 100%;
+    margin-bottom: 15px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+#user-config .input-field:hover{
+    transition: all 0.5s;
+    box-shadow: 2px 2px 10px #477dbb;
+}
+
+#user-config h1{
+    margin: 10px 0px;
+}
+
+#user-config .config-file {
+    margin: 0px 5px;
+}
+
 
 @media (max-width: 992px) {
     header .head-side-right {

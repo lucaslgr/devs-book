@@ -23,6 +23,8 @@ class UserHandler {
                 $loggedUser->setEmail($data['email']);
                 $loggedUser->setName($data['name']);
                 $loggedUser->setAvatar($data['avatar']);
+                $loggedUser->setCity($data['city']);
+                $loggedUser->setWork($data['work']);
                 $loggedUser->setBirthDate($data['birthdate']);
 
                 return $loggedUser;
@@ -62,8 +64,16 @@ class UserHandler {
     /**
      * Verifica se já tem um usuário cadastrado com esse email
     */
-    public static function emailExists($email){
-        return User::select()->where('email', $email)->one() ? true: false;
+    public static function emailExists($email, $idOwner = ''){
+        if(empty($idOwner))
+            return User::select()
+                ->where('email', $email)
+            ->one() ? true: false;
+        else
+            return User::select()
+                ->where('email', $email)
+                ->where('id', '!=', $idOwner)
+            ->one() ? true: false;
     }
 
     /**
@@ -152,5 +162,84 @@ class UserHandler {
         ])->execute();
 
         return $token;
+    }
+
+    /**
+     * Altera os dados do usuário
+    */
+    public static function editUser($id, $name, $email, $birthdate, $city, $work, $password = ''){
+        //Criptografando a senha
+        if(!empty($password)){
+            $hash = password_hash($password, PASSWORD_BCRYPT);
+
+            User::update()
+                ->set([
+                    'email' => $email,
+                    'name' => $name,
+                    'password' => $hash,
+                    'birthdate' => $birthdate,
+                    'city' => $city,
+                    'work' => $work
+                ])
+                ->where('id', $id)
+            ->execute();
+        } else {
+            User::update()
+                ->set([
+                    'email' => $email,
+                    'name' => $name,
+                    'birthdate' => $birthdate,
+                    'city' => $city,
+                    'work' => $work
+                ])
+                ->where('id', $id)
+            ->execute();
+        }
+    }
+
+    /**
+     * Verifica se o usuári do respectivo id passado no primeiro parâmetro segue o respectivo usuário do id passado no ssegundo parametro
+    */
+    public static function isFollowing($from, $to){
+        $data = UserRelation::select()
+            ->where('user_from', $from)
+            ->where('user_to', $to)
+        ->one();
+
+        return ($data)?true:false;
+    }
+
+    public static function unfollow($from, $to){
+        UserRelation::delete()
+            ->where('user_from', $from)
+            ->where('user_to', $to)
+        ->execute();
+    }
+
+    public static function follow($from, $to){
+        UserRelation::insert([
+            'user_from' => $from,
+            'user_to' => $to
+        ])->execute();
+    }
+
+    /**
+     * Faz a busca de usuários por um termo digitado e passado no parâmetro
+    */
+    public static function searchUser($searchTerm){
+        $data = User::select()->where('name', 'like', '%'.$searchTerm.'%')->get();
+
+        $users = [];
+        if ($data) {
+            foreach($data as $user){
+                $newUser = new User();
+                $newUser->setId($user['id']);
+                $newUser->setName($user['name']);
+                $newUser->setAvatar($user['avatar']);
+    
+                $users[] = $newUser;
+            }
+        }
+        return $users;
     }
 }
