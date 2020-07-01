@@ -53,6 +53,7 @@
 - As configurações de Banco de Dados e URL estão no arquivo *src/Config.php*
 
 - É importante configurar corretamente a constante *BASE_DIR*:
+  
   > const BASE_DIR = '/**PastaDoProjeto**/public';
 
 ### Utilização
@@ -60,7 +61,7 @@
 - Você deve acessar a pasta *public* do projeto.
 
 - O ideal é criar um ***alias*** específico no servidor que direcione diretamente para a pasta     *public*.
-  
+
 ## Modelo de MODEL
 
 ```php
@@ -72,6 +73,14 @@ class Usuario extends Model {
 
 }
 ```
+
+## :flower_playing_cards:Imagens do Projeto
+
+![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
+
+![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
+
+![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
 
 ## :man_technologist: Autoria
 
