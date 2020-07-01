@@ -33,7 +33,7 @@
   
   ```bash
   # Clonando este repositório
-  $ git clone https://github.com/lucaslgr/api-restful-ponto-eletronico
+  $ git clone https://github.com/lucaslgr/devs-book
   ```
 
 - 2º: Ao descompactar, é necessário rodar o **composer** pra instalar as dependências e gerar o *autoload*.
