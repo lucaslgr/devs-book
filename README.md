@@ -10,7 +10,7 @@
 
 ## :loudspeaker: Apresentação
 
-**BATPONTO** é um projeto inspirado no facebook para fins de estudo.
+**DEVSBOOK** é um projeto inspirado no facebook para fins de estudo.
 
 ## ⚙ Features
 
