@@ -46,7 +46,7 @@
 
 - 3º: Inicie o Apache e o MySQL via XAMPP ou via terminal e abra no navegador
 
-### Configurando
+### Configurando:
 
 - Todos os arquivos de **configuração** e aplicação estão dentro da pasta *src*.
 
@@ -56,7 +56,7 @@
   
   > const BASE_DIR = '/**PastaDoProjeto**/public';
 
-### Utilização
+### Utilizando:
 
 - Você deve acessar a pasta *public* do projeto.
 
