@@ -2,7 +2,7 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/projectDevsBook/public';
+    const BASE_DIR = '/project-devs-book/public';
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
