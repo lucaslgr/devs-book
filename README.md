@@ -76,11 +76,11 @@ class Usuario extends Model {
 
 ## :flower_playing_cards:Imagens do Projeto
 
-![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
+![Imagem do projeto](https://github.com/lucaslgr/devs-book/blob/master/screenshots/project-devs-book-1.png)
 
-![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
+![Imagem do projeto](https://github.com/lucaslgr/devs-book/blob/master/screenshots/project-devs-book-2.png)
 
-![Imagem do projeto](https://github.com/lucaslgr/simulans-front-end/blob/master/screenshot/simulans-front-end1.png)
+![Imagem do projeto](https://github.com/lucaslgr/devs-book/blob/master/screenshots/project-devs-book-3.png)
 
 ## :man_technologist: Autoria
 
